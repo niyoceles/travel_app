@@ -48,8 +48,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         width: 50,
                         height: 50,
                         decoration: BoxDecoration(
+                          image: const DecorationImage(image: AssetImage("img/user-profile.png")),
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.grey.withOpacity(0.5)),
+                            color: Colors.white),
                       )
                     ],
                   )),
@@ -85,20 +86,28 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 width: double.maxFinite,
                 height: 300,
                 child: TabBarView(controller: _tabController, children: [
-                  ListView.builder(
-                      itemCount: 4,
+                  ListView.builder( 
+                      itemCount: info.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (_, index) {
-                        return Container(
-                          margin: const EdgeInsets.only(right: 15, top: 10),
-                          width: 200,
-                          height: 300,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.white,
-                            image: const DecorationImage(
-                              image: AssetImage("img/mountain.jpg"),
-                              fit: BoxFit.cover,
+                        return GestureDetector(
+                          onTap: () {
+                            BlocProvider.of<AppCubits>(context)
+                                .detailPage(info[index]);
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.only(right: 15, top: 10),
+                            width: 200,
+                            height: 300,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white,
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                    "http://mark.bslmeiyu.com/uploads/" +
+                                        info[index].img),
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         );

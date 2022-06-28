@@ -32,7 +32,7 @@ class ResponseButton extends StatelessWidget {
             const Text(
               ">>>",
               style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
             ),
           ],
         ),

@@ -5,8 +5,6 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('Search page'),
-    );
+    return const Center(child: Text('Search page'));
   }
 }
